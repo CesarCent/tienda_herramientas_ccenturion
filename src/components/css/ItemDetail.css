@@ -1,0 +1,7 @@
+.itemDetail{
+    font-size: .85em;
+}
+
+.itemDetail > .card-subtitle{
+    font-size: 1em;
+}
