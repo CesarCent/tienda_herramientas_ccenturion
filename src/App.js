@@ -13,6 +13,7 @@ function App() {
           <Route exatc path='/' element={ <ItemListContainer/> } />
           <Route exatc path='/category/:id' element={ <ItemListContainer/> } />
           <Route exatc path='/item/:id' element={ <ItemDetailContainer/> } />
+          <Route exatc path='/cart' element={ <>cart coming soon</> } />
         </Routes>
     </div>
     </BrowserRouter>
