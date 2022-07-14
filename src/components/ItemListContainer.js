@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from 'react-router-dom';
+import products from "../utils/products.json"
+
 
 
 const ItemListContainer = () => {
@@ -9,13 +11,7 @@ const ItemListContainer = () => {
 
     let ItemsService = new Promise((resolve, reject) => {
         setTimeout(
-            () => resolve([
-                { id: 1, title: "Hammer Item", description: "un buen Item", price: 300.00, pictureURL: "nn", category: "hogar" },
-                { id: 2, title: "Taladro Item", description: "de alta calidad", price: 2400.00, pictureURL: "nn", category: "hogar" },
-                { id: 3, title: "Bordeadora", description: "corta muy bien", price: 3200.00, pictureURL: "nn", category: "jardin" },
-                { id: 4, title: "Manguera", description: "funcional y economica", price: 400.00, pictureURL: "nn", category: "jardin" },
-                { id: 5, title: "Clavo Item", description: "nunca sobran", price: 1.00, pictureURL: "nn", category: "hogar" }
-            ]), 1000
+            () => resolve(products.data), 1000
         )
     })
 
@@ -30,7 +26,11 @@ const ItemListContainer = () => {
     })
 
     return (
-        <ItemList items={items} />
+            <div className="row">
+                <div className="col-10 offset-md-1">
+                <ItemList items={items}  />
+                </div>
+            </div>
     )
 }
 
