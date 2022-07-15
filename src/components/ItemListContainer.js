@@ -26,11 +26,11 @@ const ItemListContainer = () => {
     })
 
     return (
-            <div className="row">
-                <div className="col-10 offset-md-1">
-                <ItemList items={items}  />
-                </div>
+        <div className="row">
+            <div className="col-10 offset-md-1">
+                <ItemList items={items} />
             </div>
+        </div>
     )
 }
 

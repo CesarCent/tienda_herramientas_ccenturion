@@ -1,10 +1,11 @@
 import './css/ItemDetail.css'
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import ItemCount from './ItemCount'
+import { useCart } from '../contexts/CartContext';
 
 const ItemDetail = ({ item, onAdd=1 }) => {
     const [count, setCount] = useState(1);
+    const cartContext = useCart()
 
     let decreace = (e)=>{
         if((count - onAdd) >= 0 ){
@@ -18,6 +19,10 @@ const ItemDetail = ({ item, onAdd=1 }) => {
         }
     }
 
+    let sumarAlCarrito = ()=>{
+        cartContext.addToCart( {title:item.title, cantidad:count} )
+    }
+
     return (
         //<div>#{item.id}#{item.title}#{item.description}#{item.price}#{item.pictureURL}</div>
 
@@ -29,9 +34,7 @@ const ItemDetail = ({ item, onAdd=1 }) => {
                 <p className="card-text">{item.description}</p>
                 <ItemCount increase={increase} decreace={decreace} initial={count}/>
             </div>
-            <Link className='btn btn-success m-3' to={'/cart'}>
-                <div>Comprar</div>
-            </Link>
+            <button className='btn btn-success m-3' onClick={sumarAlCarrito}>Sumar al carrito</button>
         </div>
     )
 }
