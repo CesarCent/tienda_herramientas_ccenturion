@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 export const CartContext = createContext()
-export const useCart = () => useContext(CartContext)
+export const useCart = () => {return useContext(CartContext)}
 
 const INITIAL_STATE = {
     addedItems: [],
@@ -22,21 +22,18 @@ export const CartProvider = ({ children }) => {
             newCart.addedItems.push(product)
         }
 
-        setCart(newCart)
-        console.log(cart);
+        setCart({...cart, newCart})
     }
 
     const removeFromCart = (product)=>{
         let newCart = cart;
         let index = cart.addedItems.findIndex((e)=> e.title === product.title )
-        console.log(index);
 
         if(index > -1){
-            newCart.addedItems.slice(index, index+1)
-            setCart(newCart)
+            newCart.addedItems.splice(index, 1)
+            setCart({...cart, newCart})
         }
 
-        console.log(cart);
     }
 
     return (
